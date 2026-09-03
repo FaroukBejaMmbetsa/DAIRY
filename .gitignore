@@ -1,0 +1,57 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+.env
+.env.*
+
+# Node / frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+dist/
+build/
+coverage/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.code-workspace
+
+# Local config / secrets
+*.local
+*.secret
+secrets/
+
+# Database / cache
+*.sqlite3
+*.db
+.cache/
+
+# Compiled and generated files
+*.class
+*.o
+*.so
+*.out
+
+# Project-specific
+# Add any project-specific files here
