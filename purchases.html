@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dairy Management | Previous Purchases</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/customer.css">
+</head>
+<body>
+  <header id="siteHeader" class="site-header"></header>
+  <main class="page-shell">
+    <section class="page-heading">
+      <p class="kicker">Your order trail</p>
+      <h1>Previous <em>purchases.</em></h1>
+      <p>Successful checkout records from this browser will appear here while the real order history is being connected to the database.</p>
+    </section>
+    <section class="purchase-list" data-purchase-list></section>
+  </main>
+  <footer class="site-footer"><div class="page-shell">Dairy Management · Your orders, kept close</div></footer>
+  <div id="cartUi"></div>
+  <script src="/customer-app.js"></script>
+</body>
+</html>

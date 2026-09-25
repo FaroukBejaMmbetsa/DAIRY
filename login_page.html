@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dairy Management Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/login.css">
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="brand-panel" aria-label="Dairy Management">
+      <div class="brand-mark" aria-hidden="true">DM</div>
+      <p class="eyebrow">Dairy Management</p>
+      <h1>Good records make<br><em>better herds.</em></h1>
+      <p class="brand-copy">A calmer place to keep your herd, production, and sales in view.</p>
+      <div class="brand-footer">
+        <span class="status-dot" aria-hidden="true"></span>
+        Farm operations portal
+      </div>
+    </section>
+
+    <section class="form-panel">
+      <div class="form-wrap">
+        <div class="form-heading">
+          <p class="eyebrow">Welcome back</p>
+          <h2>Sign in to your workspace</h2>
+          <p class="form-intro">Enter your details to continue.</p>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" placeholder="Your username" required>
+
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Your password" required>
+
+          <button class="primary-button" type="submit">Log in <span aria-hidden="true">→</span></button>
+          <p id="message" class="form-message" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="switch-form">
+          <span>Don't have an account?</span>
+          <button id="showSignup" class="text-button" type="button">Create one</button>
+        </p>
+
+        <form id="signupForm" class="auth-form" hidden>
+          <div class="form-heading compact-heading">
+            <p class="eyebrow">New here?</p>
+            <h2>Create your account</h2>
+          </div>
+
+          <label for="signupName">Full name</label>
+          <input id="signupName" name="fullName" type="text" autocomplete="name" placeholder="Your full name" required>
+
+          <label for="signupEmail">Email</label>
+          <input id="signupEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+
+          <label for="signupUsername">Username</label>
+          <input id="signupUsername" name="username" type="text" autocomplete="username" placeholder="Choose a username" required>
+
+          <label for="signupPassword">Password</label>
+          <input id="signupPassword" name="password" type="password" minlength="8" autocomplete="new-password" placeholder="At least 8 characters" required>
+
+          <label for="confirmPassword">Confirm password</label>
+          <input id="confirmPassword" name="confirmPassword" type="password" minlength="8" autocomplete="new-password" placeholder="Repeat your password" required>
+
+          <button class="primary-button" type="submit">Create account <span aria-hidden="true">→</span></button>
+          <button id="showLogin" class="secondary-button" type="button">Back to login</button>
+          <p id="signupMessage" class="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="/login_page.js"></script>
+</body>
+</html>

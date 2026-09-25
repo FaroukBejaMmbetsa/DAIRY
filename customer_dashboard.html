@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dairy Management | Customer Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/customer.css">
+</head>
+<body>
+  <header id="siteHeader" class="site-header"></header>
+  <main class="page-shell">
+    <section class="hero">
+      <div>
+        <p class="kicker">Welcome to the farmstand</p>
+        <h1>Good things,<br><em>grown well.</em></h1>
+        <p class="hero-copy">Browse healthy dairy cows and fresh farm products, then build your basket at your own pace.</p>
+      </div>
+      <p class="hero-note">Thoughtful farming, honest products, and a little more care in every order.</p>
+    </section>
+
+    <section class="catalog-section">
+      <div class="section-heading">
+        <h2>Cows looking for a new home</h2>
+        <p>Scroll through the available herd and choose a cow that fits your farm.</p>
+      </div>
+      <div class="catalog-scroll">
+        <div class="product-grid" data-product-grid data-category="cows"></div>
+      </div>
+    </section>
+
+    <section class="catalog-section">
+      <div class="section-heading">
+        <h2>Fresh from our dairy</h2>
+        <p>Milk, cultured favourites, and farmhouse staples ready for your table.</p>
+      </div>
+      <div class="catalog-scroll">
+        <div class="product-grid" data-product-grid data-category="dairy"></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="page-shell">Dairy Management · Local farm operations</div></footer>
+  <div id="cartUi"></div>
+  <script src="/customer-app.js"></script>
+</body>
+</html>

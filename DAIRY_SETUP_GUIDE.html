@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dairy Management Setup Guide</title>
+  <style>
+    :root { --forest: #17483d; --ink: #24332f; --muted: #687870; --cream: #f7f3ea; --paper: #fffdf8; --amber: #d79b43; --line: #dce5dd; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--cream); font: 14px/1.6 Arial, sans-serif; }
+    .page { width: 820px; margin: 0 auto; padding: 52px 62px; background: var(--paper); }
+    .cover { min-height: 980px; display: flex; flex-direction: column; justify-content: center; }
+    .mark { display: grid; width: 52px; height: 52px; place-items: center; color: var(--forest); background: var(--amber); border-radius: 50%; font-weight: bold; }
+    .eyebrow { margin: 32px 0 10px; color: #bd6b4f; font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+    h1, h2 { color: var(--forest); font-family: Georgia, serif; line-height: 1.1; }
+    h1 { max-width: 600px; margin: 0; font-size: 54px; }
+    h2 { margin: 0 0 16px; font-size: 28px; }
+    h3 { margin: 24px 0 7px; color: var(--forest); font-size: 16px; }
+    p { margin: 8px 0 16px; }
+    .lead { max-width: 540px; margin-top: 24px; color: var(--muted); font-size: 18px; }
+    .rule { width: 100%; height: 1px; margin: 30px 0; background: var(--line); }
+    .section { page-break-before: always; }
+    .step { margin: 16px 0; padding: 16px 18px; border: 1px solid var(--line); border-left: 4px solid var(--amber); background: #fbfaf5; }
+    .step strong { display: block; margin-bottom: 6px; color: var(--forest); }
+    code, pre { font-family: Consolas, 'Courier New', monospace; }
+    pre { overflow: hidden; margin: 10px 0 0; padding: 13px 15px; color: #edf7ed; background: #15362f; border-radius: 4px; font-size: 12px; line-height: 1.55; white-space: pre-wrap; }
+    .note { padding: 13px 16px; color: #66502d; background: #fff3d9; border: 1px solid #ead29d; border-radius: 4px; }
+    .url { display: inline-block; margin: 4px 0; padding: 8px 12px; color: var(--forest); background: #e8f0e8; border-radius: 3px; font-weight: bold; }
+    ul { padding-left: 22px; }
+    li { margin: 6px 0; }
+    .footer { margin-top: 55px; padding-top: 15px; color: var(--muted); border-top: 1px solid var(--line); font-size: 11px; }
+    @media print { body { background: white; } .page { width: auto; margin: 0; } }
+  </style>
+</head>
+<body>
+  <article class="page cover">
+    <div class="mark">DM</div>
+    <p class="eyebrow">Dairy Management</p>
+    <h1>Local setup guide</h1>
+    <p class="lead">The exact steps to prepare the database, install the Node packages, start the server, and open the customer interface.</p>
+    <div class="rule"></div>
+    <p><strong>Project folder</strong><br>C:\Users\Farouk Beja M'mbetsa\OneDrive\Desktop\DAIRY</p>
+    <p><strong>Prepared for</strong><br>Local demonstration and UI review</p>
+    <div class="footer">Keep the server terminal open while testing the interface.</div>
+  </article>
+
+  <article class="page section">
+    <p class="eyebrow">Step 01</p>
+    <h2>Open the project terminal</h2>
+    <p>Open PowerShell in the project folder. Use <code>npm.cmd</code> on Windows because PowerShell may block the npm script wrapper.</p>
+    <pre>cd "C:\Users\Farouk Beja M'mbetsa\OneDrive\Desktop\DAIRY"</pre>
+
+    <p class="eyebrow">Step 02</p>
+    <h2>Install the Node packages</h2>
+    <pre>npm.cmd install</pre>
+    <p>This installs Express, MySQL, password hashing, environment variables, and CORS support.</p>
+
+    <p class="eyebrow">Step 03</p>
+    <h2>Create the environment file</h2>
+    <pre>Copy-Item .env.example .env
+notepad .env</pre>
+    <p>Set the values in <code>.env</code>. Use your actual MySQL root password. Do not share this file or its password.</p>
+    <pre>DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=your_actual_mysql_password
+DB_NAME=dairy_management
+PORT=3000
+ADMIN_USERNAME=choose_admin_username
+ADMIN_PASSWORD=choose_admin_password</pre>
+  </article>
+
+  <article class="page section">
+    <p class="eyebrow">Step 04</p>
+    <h2>Update MySQL Workbench</h2>
+    <p>Open <code>customer_store_schema.sql</code> in MySQL Workbench, make sure the active database is <code>dairy_management</code>, and execute the complete file.</p>
+    <div class="note"><strong>Important:</strong> This migration adds tables without deleting your current data. Do not run the full <code>dairy_database.sql</code> file unless you intentionally want to rebuild the database.</div>
+    <pre>USE dairy_management;</pre>
+    <p>The migration adds:</p>
+    <ul>
+      <li><code>products</code> for milk, yoghurt, cheese, and butter</li>
+      <li><code>orders</code> for customer checkouts</li>
+      <li><code>order_items</code> for products or cows inside an order</li>
+      <li><code>payments</code> for future Daraja/M-Pesa records</li>
+      <li><code>price</code> and <code>available_for_sale</code> to <code>cows</code></li>
+    </ul>
+    <p>Confirm the tables with:</p>
+    <pre>USE dairy_management;
+SHOW TABLES;</pre>
+  </article>
+
+  <article class="page section">
+    <p class="eyebrow">Step 05</p>
+    <h2>Start the local server</h2>
+    <p>Run this from the project folder:</p>
+    <pre>npm.cmd start</pre>
+    <p>Wait for this message:</p>
+    <pre>Dairy login server running at http://localhost:3000</pre>
+    <div class="note"><strong>Keep this terminal open.</strong> Closing it stops the server.</div>
+
+    <h3>Open the login page</h3>
+    <p class="url">http://localhost:3000/login_page.html</p>
+    <h3>Open the customer storefront directly</h3>
+    <p class="url">http://localhost:3000/customer_dashboard.html</p>
+    <p>After a successful login, the customer is sent to the dashboard.</p>
+
+    <h3>Available customer pages</h3>
+    <ul>
+      <li><code>customer_dashboard.html</code> - overview and product sections</li>
+      <li><code>cows.html</code> - cows for sale</li>
+      <li><code>dairy-products.html</code> - dairy products</li>
+      <li><code>purchases.html</code> - previous purchases</li>
+      <li><code>about.html</code> - company and group information</li>
+    </ul>
+  </article>
+
+  <article class="page section">
+    <p class="eyebrow">Troubleshooting</p>
+    <h2>Common messages</h2>
+    <h3>“npm is not recognized”</h3>
+    <p>Install Node.js LTS, restart VS Code, then use:</p>
+    <pre>node --version
+npm.cmd --version</pre>
+
+    <h3>“Cannot find module 'dotenv'”</h3>
+    <p>Install the dependencies from the project folder:</p>
+    <pre>npm.cmd install</pre>
+
+    <h3>“EADDRINUSE :::3000”</h3>
+    <p>The server is already running. Use the existing server and open the URL. If you need to restart it, press <code>Ctrl + C</code> in the terminal running Node, then run:</p>
+    <pre>npm.cmd start</pre>
+
+    <h3>“Access denied for user root”</h3>
+    <p>Open <code>.env</code> and correct <code>DB_PASSWORD</code>. The password must match the MySQL Workbench connection.</p>
+
+    <h3>“Unable to connect to the server”</h3>
+    <p>Make sure <code>npm.cmd start</code> is running and open the page through <code>http://localhost:3000</code>, not by double-clicking the HTML file.</p>
+    <div class="footer">The M-Pesa flow is currently a local testing placeholder. The future prompt amount is KES 1 until Daraja is connected.</div>
+  </article>
+</body>
+</html>
